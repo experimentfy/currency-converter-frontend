@@ -17,6 +17,6 @@ export const AppRoutes: Routes = [
   }]},
   {
     path: '**',
-    redirectTo: 'currency-converter'
+    redirectTo: '/currency-converter'
   }
 ]
