@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve -o",
-    "build": "ng build --prod --base-href /currency-converter-frontend/",
+    "build": "ng build --prod --output-path docs --base-href /urrency-converter-frontend/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
