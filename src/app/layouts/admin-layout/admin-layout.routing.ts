@@ -4,5 +4,5 @@ import { CurrencyConverterComponent } from '../../pages/currency-converter/curre
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: '',           component: CurrencyConverterComponent }
+    { path: 'currency-converter',           component: CurrencyConverterComponent }
 ];

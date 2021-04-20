@@ -20,7 +20,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   ],
   imports: [
     BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes, {}),
+    RouterModule.forRoot(AppRoutes, { useHash: true}),
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
