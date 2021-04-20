@@ -5,8 +5,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 export const AppRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'currency-converter',
-    pathMatch: 'full',
+    redirectTo: 'currency-converter'
   }, {
     path: '',
     component: AdminLayoutComponent,
