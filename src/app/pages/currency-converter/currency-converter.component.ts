@@ -87,13 +87,15 @@ export class CurrencyConverterComponent implements OnInit {
       .currencyConverter(currencyConverterForm.value)
       .subscribe(
         (success) => {
-            if(success[`value`] === null) {
-                this.messageError = "It was not possible to perform the conversion with the selected parameters.";
+            let responseAmount = success['value'];
+            let responseApiName = success['apiName'];
+            if(responseAmount === null) {
+                this.messageError = `It was not possible to perform the conversion with the selected parameters - ${responseApiName}`;
                 return;
             }
-            let v = success['value'];
-            this.responseConverter.amount = Number(v).toFixed(2);
-            this.responseConverter.apiName = success['apiName'];
+            
+            this.responseConverter.amount = Number(responseAmount).toFixed(2);
+            this.responseConverter.apiName = responseApiName;
         },
         (error) => {
             this.showSpinner = false;
