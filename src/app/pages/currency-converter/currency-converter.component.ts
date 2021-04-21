@@ -94,7 +94,6 @@ export class CurrencyConverterComponent implements OnInit {
             let v = success['value'];
             this.responseConverter.amount = Number(v).toFixed(2);
             this.responseConverter.apiName = success['apiName'];
-            console.log(this.responseConverter);
         },
         (error) => {
             this.showSpinner = false;
