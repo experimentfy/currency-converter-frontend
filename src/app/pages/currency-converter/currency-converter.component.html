@@ -30,31 +30,24 @@
         <h5 class="card-title">Currency Converter</h5>
       </div>
       <div class="card-body">
-        <form>
-
-
+        <form [formGroup]="currencyConverterForm" (ngSubmit)="valueConverter(currencyConverterForm)">
+          
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
                 <label>Value</label>
-                <input type="text" class="form-control" placeholder="100.00">
+                <input type="text" class="form-control" formControlName="amount" placeholder="100.00">
               </div>
-
-
-
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="exampleFormControlSelect1">From</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <label for="currencyFromSelected">From</label>                
+                <select class="form-control" formControlName="currencyFromSelected">
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let currency of currencyList" [value]="currency.value">{{currency.name}}</option>
                 </select>
               </div>
             </div>
@@ -63,24 +56,45 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="exampleFormControlSelect1">To</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <label for="currencyToSelected">To</label>                
+                <select class="form-control" formControlName="currencyToSelected">
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let currency of currencyList" [value]="currency.value">{{currency.name}}</option>
                 </select>
               </div>
             </div>
           </div>
-          
           
           <div class="row">
             <div class="update col-md-12">
-              <button type="submit" class="btn btn-primary btn-round">Converter!</button>
+              <button type="submit" [disabled]="!currencyConverterForm.valid" class="mb-3 btn-currency btn btn-primary btn-round">
+                <span class="loading-currency" *ngIf="showSpinner">
+                  <span class="spinner-currency"></span>
+                </span>
+                Converter!
+              </button>
             </div>
           </div>
+
+          <div class="row" *ngIf="responseConverter.amount">
+            <div class="col-md-12">
+              <div class="p-3" style="background: #a8ecfaab ">
+                <p class="description">Converted value: <span class="title">R$ {{responseConverter.amount}}</span></p>
+                <p class="description">Amount converted by: <span class="title">{{responseConverter.apiName}}</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="this.messageError">
+            <div class="col-md-12">
+              <div class="p-3" style="background: #a8ecfaab ">
+                <p class="description">Error: <span class="title">{{this.messageError}}</span></p>
+              </div>
+            </div>
+          </div>
+
+          
+
         </form>
       </div>
     </div>
